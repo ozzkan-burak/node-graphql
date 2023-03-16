@@ -5,18 +5,27 @@ const { buildSchema } = require('graphql');
 const booksArray = [
   {
     title: "Kitap 1",
-    author: "ABC"
+    author: "ABC",
+    id: 1,
+    isActive: false,
+    price: 12.77
   },
   {
     title: "Kitap 2",
-    author: "DEF"
+    author: "DEF",
+    id: 2,
+    isActive: true,
+    price: 16.20
   },
 ]
 
 const typeDefs = `#graphql
   type Book {
-    title: String
-    author: String
+    title: String!
+    author: String!
+    id:Int!
+    isActive: BooLean!
+    price: Float!
   }
 
 
@@ -35,7 +44,7 @@ const resolvers = {
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
 });
 
 const startServer = async () => {
@@ -45,3 +54,5 @@ const startServer = async () => {
     }
   })
 }
+
+startServer();
