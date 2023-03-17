@@ -19,18 +19,38 @@ const booksArray = [
   },
 ]
 
+const usersArray = [
+  {
+    name: 'Burak',
+    surname: 'Özkan'
+  },
+  {
+    name: 'Uras',
+    surname: 'Özkan'
+  },
+  {
+    name: 'Buse',
+    surname: 'Özkan'
+  }
+]
+
 const typeDefs = `#graphql
   type Book {
     title: String!
     author: String!
     id:Int!
-    isActive: BooLean!
+    isActive: Boolean!
     price: Float!
   }
 
+  type User {
+    name: String!
+    surname: String!
+  }
 
   type Query {
     books: [Book]
+    users: [User]
   }
 `;
 
@@ -38,6 +58,9 @@ const resolvers = {
   Query: {
     books: ()=> {
       return booksArray;
+    },
+    users: ()=> {
+      return usersArray;
     }
   }
 };
